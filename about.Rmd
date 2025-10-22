@@ -1,8 +1,8 @@
----
-title: "about"
----
-
 ## About Me
 
-<img src="images/colca.jpg" style="width:75%">
+I am currently a Masters Student at Columbia's Mailman School of Public Health pursuing a degree in Biostatistics.
+
+In my free time I love hiking and fishing.
+
+<img src="images/colca.jpg" style="width:100%">
 

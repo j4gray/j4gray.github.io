@@ -1,9 +1,7 @@
----
-title: "Personal Website"
----
 
-# This is Julia's website
 
-[about](about.html)
+# Julia Gray
+### This website is to showcase data science projects written in R
+
 
 ![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXhwM283MWc2eHg4dWp6NXJ4ZTVieXE1ejByYmZwODJ2NmJleGE4MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1X7xHKopCeZu1c7SaT/giphy.gif)
