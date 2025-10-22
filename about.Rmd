@@ -4,5 +4,6 @@ I am currently a Masters Student at Columbia's Mailman School of Public Health p
 
 In my free time I love hiking and fishing.
 
-<img src="images/colca.jpg" style="width:100%">
+<img src="images/colca.jpg" style="width:61%">
+<img src="images/fishing.jpg" style="width:34%">
 
