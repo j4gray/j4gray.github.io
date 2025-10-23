@@ -72,11 +72,6 @@ trim_cuisine_description = function(cuisine_description){
   trimmed
 }
 
-nchar("Japanese (super duper duper duper long string)")
-grepl(",", "Japanese ,super duper duper duper long string)", ignore.case = TRUE)
-test = str_split_i("Japanese (super duper duper duper long string)", " \\(", 1)
-trim_cuisine_description("Japanese (super duper duper duper long string)")
-
 nyc_rest |> 
   distinct(camis, dba, cuisine_description) |> 
   count(cuisine_description) |> 
