@@ -1,5 +1,6 @@
-## About Me
-
+---
+title: "About"
+---
 I am currently a Masters Student at Columbia's Mailman School of Public Health pursuing a degree in Biostatistics.
 
 (For my full resume please refer to [LinkedIn](https://www.linkedin.com/in/julia-gray-ny/))
