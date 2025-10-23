@@ -1,0 +1,97 @@
+---
+title: "NYC Restaurant Inspections"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: 
+      version: 4
+      bootswatch: lumen
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+```
+
+```{r}
+data("rest_inspec")
+
+nyc_rest = 
+  rest_inspec |> 
+  mutate (
+    inspection_date = as.Date(inspection_date, format = "%Y-%m-%d")
+  ) |> 
+  filter(
+    boro == "Manhattan",
+    inspection_date >= "2019-01-01"
+  )
+```
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Map of Restaurants by Grade
+
+```{r}
+nyc_rest |>
+  filter(latitude != 0, longitude != 0, !is.na(grade)) |> 
+  distinct(camis, dba, cuisine_description, latitude, longitude, grade) |> 
+  mutate(
+    text_label = str_c("Name: ", dba, "\nCuisine: ", cuisine_description, "\nGrade: ", grade)
+    ) |> 
+  plot_ly(
+    x = ~longitude, y = ~latitude, type = "scatter", mode = "markers",
+    color = ~grade, text = ~text_label, alpha = 0.5, colors = "viridis")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Number of Restaurants by Cuisine
+
+```{r}
+trim_cuisine_description = function(cuisine_description){
+  #print(cuisine_description)
+  
+  if (nchar(cuisine_description) <= 15) {
+    trimmed = cuisine_description
+  }
+  else {
+    if (grepl("\\(", cuisine_description )) {
+      trimmed = str_split_i(cuisine_description, " \\(", 1)
+    } else if (grepl(",", cuisine_description )) {
+      trimmed = str_split_i(cuisine_description, ",", 1)
+    } else{
+      trimmed = substr(cuisine_description, 1, 10)+ "..."
+    }
+  } 
+  trimmed
+}
+
+nchar("Japanese (super duper duper duper long string)")
+grepl(",", "Japanese ,super duper duper duper long string)", ignore.case = TRUE)
+test = str_split_i("Japanese (super duper duper duper long string)", " \\(", 1)
+trim_cuisine_description("Japanese (super duper duper duper long string)")
+
+nyc_rest |> 
+  distinct(camis, dba, cuisine_description) |> 
+  count(cuisine_description) |> 
+  mutate(
+    cuisine_description = fct_reorder(cuisine_description, n)
+    ) |> 
+  plot_ly(y = ~cuisine_description, x = ~n, color = ~cuisine_description, type = "bar", colors = "viridis") |> 
+  layout(showlegend = FALSE)
+```
+
+### Grades over the year
+
+```{r}
+nyc_rest |> 
+  count(grade, grade_date) |> 
+  plot_ly(x = ~grade_date, y = ~n, color = ~grade, type = "scatter", mode = "lines", colors = "viridis")
+```
+

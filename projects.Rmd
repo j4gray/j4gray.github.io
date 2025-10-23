@@ -1,0 +1,8 @@
+## Projects
+
+* [NYC Restaurant Inspections Dashboard](projects/nyc_restuarant_inspections/nyc_restaurant_inspections.html)
+[<img src="images/restaurant_grades.png" style="width:20%">](projects/nyc_restuarant_inspections/nyc_restaurant_inspections.html)
+
+### Test Visualizations
+* [NYC AirBnB Dashboard](tests/dashboard.html)
+* [NYC AirBnB Plotly](tests/plotly.html)
