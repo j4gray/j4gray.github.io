@@ -64,11 +64,11 @@ nyc_rest |>
   layout(showlegend = FALSE)
 ```
 
-### Grades over the year
+### Scores of Most popular Cuisines
 
 ```{r}
 nyc_rest |> 
-  count(grade, grade_date) |> 
-  plot_ly(x = ~grade_date, y = ~n, color = ~grade, type = "scatter", mode = "lines", colors = "viridis")
+  filter(cuisine_description %in% c("American", "Italian", "Chinese", "Japanese", "Mexican", "Pizza", "French", "Indian", "Thai")) |> 
+  plot_ly(x = ~cuisine_description, y = ~score, color = ~cuisine_description, type = "box", colors = "viridis")
 ```
 
